@@ -10,28 +10,35 @@
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: cornsilk;
+            color: white;
         }
         .container-lg {
-            background-color:lightcoral;
+            background-color: rgba(0, 0, 139, 0.74);
             text-align: center;
             margin-top: 2em;
             padding: 15px;
             border-radius: .5em;
         }
         header {
-            color: white;
             background-color: #333333;
         }
         h2 {
-           border: black;
+           border: whitesmoke;
            border-style: solid;
            border-width: 3px;
            border-radius: .5em;
-           margin-bottom: 1em;
+           margin: 0.5em;
         }
         button {
-            margin-bottom: 1em;
-            
+            margin: 1em 0 1em 0;
+        }
+        #result-container {
+            background-color: teal;
+        }
+        #result {
+            color: black;
+            font-weight: 600;
+            font-size: 3em;
         }
     </style>
   </head>
@@ -66,16 +73,23 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-lg-12">
                 <button onclick="playScissors()" class="btn btn-info btn-block">
                     <h3 id="scissors">Scissors</h3>
                 </button>
             </div>
         </div>
+    </div>
 
-
+    <div id="result-container" class="container-lg">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 id="result">Will you win? Lose? Tie?</h2>
+            </div>
+        </div>
 
     </div>
+
     <div class="container-lg">
         <div class="row">
             <div class="col-lg-12">
@@ -98,93 +112,87 @@
         
         function playRock() {
             var choices = ["Rock", "Paper", "Scissors"];
-            var userChoice = document.getElementById("rock").innerHTML;
             var computerChoice = choices[Math.floor((Math.random())*3)];
 
                 // Computer wins
-                if ((userChoice === "Rock" && computerChoice === "Paper") 
-                || (userChoice === "Scissors" && computerChoice === "Rock") 
-                || (userChoice === "Paper" && computerChoice === "Scissors")) {
-                    alert("You lose! PC chose " + computerChoice);
+                if (computerChoice === "Paper") {
+                    // alert("You lose! PC chose " + computerChoice);
                     computerWin++;
                     document.getElementById("pc-win").innerHTML = "Computer won " + computerWin + " times.";
+                    document.getElementById("result").innerHTML = "You lose! Computer picked " + computerChoice + "."; 
                 }
 
                 // User wins
-                else if ((userChoice === "Rock" && computerChoice === "Scissors") 
-                || (userChoice === "Scissors" && computerChoice === "Paper") 
-                || (userChoice === "Paper" && computerChoice === "Rock")) {
-                    alert("You win! PC chose " + computerChoice);
+                else if (computerChoice === "Scissors") {
+                    // alert("You win! PC chose " + computerChoice);
                     userWin++;
                     document.getElementById("user-win").innerHTML = "You won " + userWin + " times.";
+                    document.getElementById("result").innerHTML = "You win! Computer picked " + computerChoice + "."; 
                 }
 
                 // Ties
                 else {
-                    alert("You tie! PC also chose " + computerChoice);
+                    // alert("You tie! PC also chose " + computerChoice);
                     ties++;
                     document.getElementById("ties").innerHTML = "You tied " + ties + " times";
+                    document.getElementById("result").innerHTML = "You tie! Computer picked " + computerChoice + "."; 
                 }
                 console.log(userWin, computerWin, ties)
         };
         function playPaper() {
             var choices = ["Rock", "Paper", "Scissors"];
-            var userChoice = document.getElementById("paper").innerHTML;
             var computerChoice = choices[Math.floor((Math.random())*3)];
 
                 // Computer wins
-                if ((userChoice === "Rock" && computerChoice === "Paper") 
-                || (userChoice === "Scissors" && computerChoice === "Rock") 
-                || (userChoice === "Paper" && computerChoice === "Scissors")) {
-                    alert("You lose! PC chose " + computerChoice);
+                if (computerChoice === "Scissors") {
+                    // alert("You lose! PC chose " + computerChoice);
                     computerWin++;
                     document.getElementById("pc-win").innerHTML = "Computer won " + computerWin + " times.";
+                    document.getElementById("result").innerHTML = "You lose! Computer picked " + computerChoice + "."; 
                 }
 
                 // User wins
-                else if ((userChoice === "Rock" && computerChoice === "Scissors") 
-                || (userChoice === "Scissors" && computerChoice === "Paper") 
-                || (userChoice === "Paper" && computerChoice === "Rock")) {
-                    alert("You win! PC chose " + computerChoice);
+                else if (computerChoice === "Rock") {
+                    // alert("You win! PC chose " + computerChoice);
                     userWin++;
                     document.getElementById("user-win").innerHTML = "You won " + userWin + " times.";
+                    document.getElementById("result").innerHTML = "You win! Computer picked " + computerChoice + "."; 
                 }
 
                 // Ties
                 else {
-                    alert("You tie! PC also chose " + computerChoice);
+                    // alert("You tie! PC also chose " + computerChoice);
                     ties++;
                     document.getElementById("ties").innerHTML = "You tied " + ties + " times";
+                    document.getElementById("result").innerHTML = "You tie! Computer picked " + computerChoice + "."; 
                 }
         };
         function playScissors() {
             var choices = ["Rock", "Paper", "Scissors"];
-            var userChoice = document.getElementById("scissors").innerHTML;
             var computerChoice = choices[Math.floor((Math.random())*3)];
 
                 // Computer wins
-                if ((userChoice === "Rock" && computerChoice === "Paper") 
-                || (userChoice === "Scissors" && computerChoice === "Rock") 
-                || (userChoice === "Paper" && computerChoice === "Scissors")) {
-                    alert("You lose! PC chose " + computerChoice);
+                if (computerChoice === "Rock") {
+                    // alert("You lose! PC chose " + computerChoice);
                     computerWin++;
                     document.getElementById("pc-win").innerHTML = "Computer won " + computerWin + " times.";
+                    document.getElementById("result").innerHTML = "You lose! Computer picked " + computerChoice + "."; 
                 }
                 
                 // User wins
-                else if ((userChoice === "Rock" && computerChoice === "Scissors") 
-                || (userChoice === "Scissors" && computerChoice === "Paper") 
-                || (userChoice === "Paper" && computerChoice === "Rock")) {
-                    alert("You win! PC chose " + computerChoice);
+                else if (computerChoice === "Paper") {
+                    // alert("You win! PC chose " + computerChoice);
                     userWin++;
                     document.getElementById("user-win").innerHTML = "You won " + userWin + " times.";
+                    document.getElementById("result").innerHTML = "You win! Computer picked " + computerChoice + "."; 
                 }
 
                 // Ties
                 else {
-                    alert("You tie! PC also chose " + computerChoice);
+                    // alert("You tie! PC also chose " + computerChoice);
                     ties++;
                     document.getElementById("ties").innerHTML = "You tied " + ties + " times";
+                    document.getElementById("result").innerHTML = "You tie! Computer picked " + computerChoice + "."; 
                 }
         };
     console.log(userWin, computerWin, ties);
